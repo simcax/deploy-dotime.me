@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: skov-run
+  name: dotime-me
   namespace: argocd
 spec:
   project: default
