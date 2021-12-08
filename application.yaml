@@ -12,7 +12,7 @@ spec:
     path: dotime-me
   destination:
     server: https://kubernetes.default.svc
-    namespace: do-time-dev
+    namespace: dotime-me-dev
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
