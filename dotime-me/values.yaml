@@ -18,7 +18,7 @@ ingress:
     nginx.org/proxy-read-timeout: 20s
   enabled: true
   hosts:
-  - host: www.dotime.me
+  - host: test.dotime.me
     paths:
     - backend:
         serviceName: dotime-me
