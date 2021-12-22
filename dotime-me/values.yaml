@@ -27,9 +27,9 @@ ingress:
         servicePort: 80
       path: /
   tls: 
-    hosts:
-      - www.dotime.me
-    secretname: www-dotime-tls
+  - hosts:
+    - www.dotime.me
+    secretName: www-dotime-tls
 minAvailable: 1
 nameOverride: ''
 nameSpace: dotime-me-dev
