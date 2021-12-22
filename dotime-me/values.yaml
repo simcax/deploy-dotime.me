@@ -16,6 +16,8 @@ ingress:
     nginx.org/client-max-body-size: 50m
     nginx.org/proxy-connect-timeout: 30s
     nginx.org/proxy-read-timeout: 20s
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
   enabled: true
   hosts:
   - host: www.dotime.me
@@ -24,7 +26,10 @@ ingress:
         serviceName: dotime-me
         servicePort: 80
       path: /
-  tls: []
+  tls: 
+    hosts:
+      - www.dotime.me
+    secretname: www-dotime-tls
 minAvailable: 1
 nameOverride: ''
 nameSpace: dotime-me-dev
