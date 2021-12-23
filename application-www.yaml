@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dotime-me
+  name: dotime-me-www
   namespace: argocd
 spec:
   project: default
@@ -10,9 +10,12 @@ spec:
     repoURL: https://github.com/simcax/deploy-dotime.me.git
     targetRevision: HEAD
     path: dotime-me
+    helm:
+      valueFiles:
+        - values-www.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: dotime-me-dev
+    namespace: dotime-me-www
   syncPolicy:
     syncOptions:
     - CreateNamespace=true

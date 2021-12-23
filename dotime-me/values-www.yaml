@@ -1,0 +1,49 @@
+affinity: {}
+autoscaling:
+  enabled: false
+  maxReplicas: 100
+  minReplicas: 1
+  targetCPUUtilizationPercentage: 80
+fullnameOverride: ''
+image:
+  pullPolicy: Always
+  repository: simcax/dotime
+  tag: 0.0.51
+imagePullSecrets: []
+ingress:
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m
+    nginx.org/client-max-body-size: 50m
+    nginx.org/proxy-connect-timeout: 30s
+    nginx.org/proxy-read-timeout: 20s
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  enabled: true
+  hosts:
+  - host: www.dotime.me
+    paths:
+    - backend:
+        serviceName: dotime-me
+        servicePort: 80
+      path: /
+  tls: 
+  - hosts:
+    - www.dotime.me
+    secretName: www-dotime-tls
+minAvailable: 1
+nameOverride: ''
+nameSpace: dotime-me-www
+nodeSelector: {}
+podAnnotations: {}
+podSecurityContext: {}
+replicaCount: 2
+resources: {}
+securityContext: {}
+service:
+  port: 80
+  type: ClusterIP
+serviceAccount:
+  annotations: {}
+  create: false
+  name: ''
+tolerations: []
