@@ -20,7 +20,7 @@ ingress:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
   enabled: true
   hosts:
-  - host: www.dotime.me
+  - host: dev.dotime.me
     paths:
     - backend:
         serviceName: dotime-me
@@ -28,8 +28,8 @@ ingress:
       path: /
   tls: 
   - hosts:
-    - www.dotime.me
-    secretName: www-dotime-tls
+    - dev.dotime.me
+    secretName: dev-dotime-tls
 minAvailable: 1
 nameOverride: ''
 nameSpace: dotime-me-dev
