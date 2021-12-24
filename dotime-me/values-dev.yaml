@@ -49,7 +49,7 @@ serviceAccount:
 tolerations: []
 volumeMounts:
 - name: cockroachdb-ssl-cert-volume
-  mountPath: "/etc/cockroachdb-ssl-cert"
+  mountPath: "/root/.postgresql"
   readOnly: true
 volumes: 
 - name: cockroachdb-ssl-cert-volume
