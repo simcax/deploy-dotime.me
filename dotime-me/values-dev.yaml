@@ -47,3 +47,10 @@ serviceAccount:
   create: false
   name: ''
 tolerations: []
+volumeMounts:
+- name: cockroachdb-ssl-cert-volume
+  mountPath: "/etc/cockroachdb-ssl-cert"
+  readOnly: true
+volumes: 
+- name: cockroachdb-ssl-cert-volume
+  secretName: cockroach-ssl-cert

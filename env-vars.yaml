@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: env-vars
-  namespace: dotime-me-dev
+  namespace: dotime-me-www
 type: Opaque
 data:
   secret_key: Yj5EmORR3gT1EKI0431A7a5Va/hwK6Oi4wo=
