@@ -37,7 +37,13 @@ nodeSelector: {}
 podAnnotations: {}
 podSecurityContext: {}
 replicaCount: 2
-resources: {}
+resources: 
+  limits:
+    memory: "200Mi"
+    cpu: "200m"
+  requests:
+    memory: "100Mi"
+    cpu: "100m"
 securityContext: {}
 service:
   port: 80
