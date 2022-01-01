@@ -22,3 +22,4 @@ jobs:
       - name: Test helm is here
         run: |
           helm version
+          helm lint dotime-me --values dotime-me/values-dev.yaml
