@@ -1,0 +1,22 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Testing HELM Charts
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run chart-testing (lint)
+        id: lint
+        uses: HexF/chart-testing-action@v3.0.1
+        with:
+          command: lint
