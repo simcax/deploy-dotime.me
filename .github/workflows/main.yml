@@ -19,7 +19,11 @@ jobs:
         uses: azure/setup-helm@v1
         with:
           version: v3.7.2
-      - name: Test helm is here
+      - name: Lint the HELM Chart
         run: |
           helm version
           helm lint dotime-me --values dotime-me/values-dev.yaml
+      - name: Install DaTree HELM Plugin
+        run: |
+          helm plugin install https://github.com/datreeio/helm-datree
+          helm datree test --ignore-missing-schemas dotime-me -- --values dotime-me/values-dev.yaml
