@@ -17,6 +17,6 @@ jobs:
 
       - name: Run chart-testing (lint)
         id: lint
-        uses: HexF/chart-testing-action@v3.0.1
+        uses: HexF/chart-testing-action@v3.0.0
         with:
           command: lint
