@@ -8,7 +8,7 @@ fullnameOverride: ''
 image:
   pullPolicy: Always
   repository: simcax/dotime
-  tag: 0.0.65
+  tag: 0.0.66
 imagePullSecrets: []
 ingress:
   annotations:
@@ -37,13 +37,13 @@ nodeSelector: {}
 podAnnotations: {}
 podSecurityContext: {}
 replicaCount: 2
-resources: 
+resources:
   limits:
-    memory: "200Mi"
-    cpu: "200m"
+    cpu: 200m
+    memory: 200Mi
   requests:
-    memory: "100Mi"
-    cpu: "100m"
+    cpu: 100m
+    memory: 100Mi
 securityContext: {}
 service:
   port: 80
