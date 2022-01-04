@@ -41,6 +41,16 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
+{{- define "dotime-me-redis.labels" -}}
+helm.sh/chart: {{ include "dotime-me.chart" . }}
+{{ include "dotime-me-redis.selectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+
+
 
 {{/*
 Selector labels
@@ -49,7 +59,10 @@ Selector labels
 app.kubernetes.io/name: {{ include "dotime-me.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
-
+{{- define "dotime-me-redis.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "dotime-me.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
 {{/*
 Create the name of the service account to use
 */}}

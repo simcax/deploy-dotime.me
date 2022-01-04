@@ -70,6 +70,8 @@ spec:
               secretKeyRef:
                 name: cockroachdb-db-connection
                 key: dbhost
+          - name: REDIS_HOST
+            value: redis
           ports:
             - name: http
               containerPort: 8000

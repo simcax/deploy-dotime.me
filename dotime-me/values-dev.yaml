@@ -36,6 +36,34 @@ nameSpace: dotime-me-dev
 nodeSelector: {}
 podAnnotations: {}
 podSecurityContext: {}
+redis:
+  image:
+    pullPolicy: IfNotPresent
+    repository: redis
+    tag: 6.2
+  livenessProbe:
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 5
+  readinessProbe:
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 5
+  replicaCount: 1
+  resources:
+    limits:
+      cpu: 200m
+      memory: 200Mi
+    requests:
+      cpu: 100m
+      memory: 100Mi
+  service:
+    port: 6379
+    type: ClusterIP  
 replicaCount: 2
 resources:
   limits:
