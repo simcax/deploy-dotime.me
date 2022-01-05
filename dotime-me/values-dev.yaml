@@ -63,7 +63,13 @@ redis:
       memory: 100Mi
   service:
     port: 6379
-    type: ClusterIP  
+    type: ClusterIP 
+  volumeMounts:
+    name: scripts
+    mountPath: /health
+    readOnly: True
+  volumes:
+    name:  dotime-me-dev-redis-health
 replicaCount: 2
 resources:
   limits:

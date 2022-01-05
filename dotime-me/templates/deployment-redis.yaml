@@ -62,3 +62,15 @@ spec:
               - /health/ping_readiness_local.sh {{ .Values.redis.livenessProbe.timeoutSeconds }}
           resources:
             {{- toYaml .Values.redis.resources | nindent 12 }}
+          volumeMounts:
+            {{ range .Values.redis.volumeMounts }}
+            - name: {{ .name }}
+              mountPath: {{ .mountPath }}
+              readOnly: {{ .readOnly }}
+            {{- end }}
+      volumes:
+        {{ range .Values.redis.volumes }}
+        - name: {{ .name }}
+          secret: 
+            secretName: {{ .secretName }}
+        {{- end }}
