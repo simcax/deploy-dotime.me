@@ -68,6 +68,7 @@ redis:
   - name: dotime-me-dev-redis-health
     mountPath: /health
     readOnly: True
+    defaultMode: 0755
   volumes:
   - name:  dotime-me-dev-redis-health
 replicaCount: 2
@@ -90,7 +91,7 @@ tolerations: []
 volumeMounts:
 - mountPath: /root/.postgresql
   name: cockroachdb-ssl-cert-volume
-  readOnly: false
+  readOnly: true
 volumes:
 - name: cockroachdb-ssl-cert-volume
   secretName: cockroach-ssl-cert
