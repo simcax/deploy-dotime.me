@@ -71,6 +71,6 @@ spec:
       volumes:
         {{ range .Values.redis.volumes }}
         - name: {{ .name }}
-          secret: 
-            secretName: {{ .secretName }}
+          configMap: 
+            name: {{ .name }}
         {{- end }}
