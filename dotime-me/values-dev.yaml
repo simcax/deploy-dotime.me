@@ -90,7 +90,7 @@ tolerations: []
 volumeMounts:
 - mountPath: /root/.postgresql
   name: cockroachdb-ssl-cert-volume
-  readOnly: true
+  readOnly: false
 volumes:
 - name: cockroachdb-ssl-cert-volume
   secretName: cockroach-ssl-cert
