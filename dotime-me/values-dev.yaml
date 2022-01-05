@@ -68,9 +68,9 @@ redis:
   - name: dotime-me-dev-redis-health
     mountPath: /health
     readOnly: True
-    defaultMode: 0755
   volumes:
   - name:  dotime-me-dev-redis-health
+    defaultMode: 0755
 replicaCount: 2
 resources:
   limits:

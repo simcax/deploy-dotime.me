@@ -67,11 +67,11 @@ spec:
             - name: {{ .name }}
               mountPath: {{ .mountPath }}
               readOnly: {{ .readOnly }}
-              defaultMode: {{ .defaultMode }}
             {{- end }}
       volumes:
         {{ range .Values.redis.volumes }}
         - name: {{ .name }}
           configMap: 
             name: {{ .name }}
+            defaultMode: {{ .defaultMode }}
         {{- end }}

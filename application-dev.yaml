@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dotime-me-dev
+  name: dotime-me-dev1
   namespace: argocd
 spec:
   project: default
@@ -15,7 +15,7 @@ spec:
         - values-dev.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: dotime-me-dev
+    namespace: dotime-me-dev1
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
