@@ -65,7 +65,7 @@ redis:
     port: 6379
     type: ClusterIP 
   volumeMounts:
-  - name: health
+  - name: dotime-me-dev-redis-health
     mountPath: /health
     readOnly: True
   volumes:
