@@ -36,7 +36,7 @@ spec:
           imagePullPolicy: {{ .Values.redis.image.pullPolicy }}
           env:
           - name: REDIS_PORT
-            value: {{ .Values.redis.service.port }}
+            value: "{{ .Values.redis.service.port }}"
           ports:
             - name: redis
               containerPort: 6379
