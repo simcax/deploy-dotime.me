@@ -8,7 +8,7 @@ fullnameOverride: ''
 image:
   pullPolicy: Always
   repository: simcax/dotime
-  tag: 0.0.71
+  tag: 0.0.74
 imagePullSecrets: []
 ingress:
   annotations:
@@ -42,17 +42,17 @@ redis:
     repository: redis
     tag: 6.2
   livenessProbe:
+    failureThreshold: 5
     initialDelaySeconds: 5
     periodSeconds: 5
+    successThreshold: 1
     timeoutSeconds: 5
-    successThreshold: 1
-    failureThreshold: 5
   readinessProbe:
+    failureThreshold: 5
     initialDelaySeconds: 5
     periodSeconds: 5
-    timeoutSeconds: 1
     successThreshold: 1
-    failureThreshold: 5
+    timeoutSeconds: 1
   replicaCount: 1
   resources:
     limits:
@@ -63,14 +63,14 @@ redis:
       memory: 100Mi
   service:
     port: 6379
-    type: ClusterIP 
+    type: ClusterIP
   volumeMounts:
-  - name: dotime-me-dev1-redis-health
-    mountPath: /health
-    readOnly: True
+  - mountPath: /health
+    name: dotime-me-dev1-redis-health
+    readOnly: true
   volumes:
-  - name:  dotime-me-dev1-redis-health
-    defaultMode: 0755
+  - defaultMode: 493
+    name: dotime-me-dev1-redis-health
 replicaCount: 2
 resources:
   limits:
