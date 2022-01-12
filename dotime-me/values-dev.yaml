@@ -4,6 +4,8 @@ autoscaling:
   maxReplicas: 100
   minReplicas: 1
   targetCPUUtilizationPercentage: 80
+cookies:
+  domain: dev.dotime.me
 fullnameOverride: ''
 image:
   pullPolicy: Always

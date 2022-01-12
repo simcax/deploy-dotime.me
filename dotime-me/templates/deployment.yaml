@@ -74,6 +74,8 @@ spec:
             value: {{ include "dotime-me.fullname" . }}-redis
           - name: VERSION
             value: "{{ .Values.image.tag }}"
+          - name: SESSION_COOKIE_DOMAIN
+            value: "{{ .Values.cookie.domain }}"
           ports:
             - name: http
               containerPort: 8000
