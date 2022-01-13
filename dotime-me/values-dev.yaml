@@ -1,3 +1,4 @@
+0-domain: &domain dev.dotime.me
 affinity: {}
 autoscaling:
   enabled: false
@@ -5,7 +6,7 @@ autoscaling:
   minReplicas: 1
   targetCPUUtilizationPercentage: 80
 cookie:
-  domain: dev.dotime.me
+  domain: *domain
 fullnameOverride: ''
 image:
   pullPolicy: Always
@@ -22,7 +23,7 @@ ingress:
     nginx.org/proxy-read-timeout: 20s
   enabled: true
   hosts:
-  - host: dev.dotime.me
+  - host: *domain
     paths:
     - backend:
         serviceName: dotime-me
@@ -30,7 +31,7 @@ ingress:
       path: /
   tls:
   - hosts:
-    - dev.dotime.me
+    - *domain
     secretName: dev-dotime-tls
 minAvailable: 1
 nameOverride: ''
