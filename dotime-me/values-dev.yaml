@@ -1,4 +1,4 @@
-0-domain: &domain dev.dotime.me
+0-domain: dev.dotime.me
 affinity: {}
 autoscaling:
   enabled: false
@@ -6,12 +6,12 @@ autoscaling:
   minReplicas: 1
   targetCPUUtilizationPercentage: 80
 cookie:
-  domain: *domain
+  domain: dev.dotime.me
 fullnameOverride: ''
 image:
   pullPolicy: Always
   repository: simcax/dotime
-  tag: 0.0.80
+  tag: 0.0.82
 imagePullSecrets: []
 ingress:
   annotations:
@@ -23,7 +23,7 @@ ingress:
     nginx.org/proxy-read-timeout: 20s
   enabled: true
   hosts:
-  - host: *domain
+  - host: dev.dotime.me
     paths:
     - backend:
         serviceName: dotime-me
@@ -31,7 +31,7 @@ ingress:
       path: /
   tls:
   - hosts:
-    - *domain
+    - dev.dotime.me
     secretName: dev-dotime-tls
 minAvailable: 1
 nameOverride: ''
