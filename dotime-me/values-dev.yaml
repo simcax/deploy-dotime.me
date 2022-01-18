@@ -11,7 +11,7 @@ fullnameOverride: ''
 image:
   pullPolicy: Always
   repository: simcax/dotime
-  tag: 0.0.86
+  tag: 0.0.87
 imagePullSecrets: []
 ingress:
   annotations:
