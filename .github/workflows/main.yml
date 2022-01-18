@@ -25,5 +25,6 @@ jobs:
           helm lint dotime-me --values dotime-me/values-dev.yaml
       - name: Install DaTree HELM Plugin
         run: |
+          export DATREE_TOKEN={{ secrets.DATREE_TOKEN }}
           helm plugin install https://github.com/datreeio/helm-datree
           helm datree test --ignore-missing-schemas dotime-me -- --values dotime-me/values-dev.yaml
