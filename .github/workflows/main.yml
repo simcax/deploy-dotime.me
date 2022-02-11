@@ -17,20 +17,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Set up Helm
-        uses: azure/setup-helm@v1
-        with:
-          version: v3.7.2
-      - name: Lint the HELM Chart
-        run: |
-          helm version
-          helm lint dotime-me --values dotime-me/values-dev.yaml
-      - name: Install DaTree HELM Plugin
-        run: |
-          export DATREE_TOKEN=${{ secrets.DATREE_TOKEN }}
-          helm plugin install https://github.com/datreeio/helm-datree
-          helm datree test --ignore-missing-schemas dotime-me -- --values dotime-me/values-dev.yaml
       - name: Run Datree Policy Check
         uses: datreeio/action-datree@main
         with:
