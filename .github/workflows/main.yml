@@ -8,8 +8,11 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  DATREE_TOKEN: ${{ secrets.DATREE_TOKEN }} 
+
 jobs:
-  build:
+  k8sPolicyCheck:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,3 +31,10 @@ jobs:
           export DATREE_TOKEN=${{ secrets.DATREE_TOKEN }}
           helm plugin install https://github.com/datreeio/helm-datree
           helm datree test --ignore-missing-schemas dotime-me -- --values dotime-me/values-dev.yaml
+      - name: Run Datree Policy Check
+        uses: datreeio/action-datree@main
+        with:
+          path: 'dotime-me/*.yaml'
+          cliArguments: '--ignore-missing-schemas dotime-me'
+          isHelmChart: 'true'
+          helmArguments: '--values dotime-me/values-dev.yaml'
