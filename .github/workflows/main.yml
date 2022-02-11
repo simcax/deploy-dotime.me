@@ -35,6 +35,6 @@ jobs:
         uses: datreeio/action-datree@main
         with:
           path: 'dotime-me/*.yaml'
-          cliArguments: '--ignore-missing-schemas dotime-me'
+          cliArguments: '--ignore-missing-schemas dotime-me --only-k8s-files'
           isHelmChart: 'true'
           helmArguments: '--values dotime-me/values-dev.yaml'
