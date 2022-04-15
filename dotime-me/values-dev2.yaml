@@ -1,0 +1,98 @@
+0-domain: dev2.dotime.me
+affinity: {}
+autoscaling:
+  enabled: false
+  maxReplicas: 100
+  minReplicas: 1
+  targetCPUUtilizationPercentage: 80
+cookie:
+  domain: dev2.dotime.me
+fullnameOverride: ''
+image:
+  pullPolicy: Always
+  repository: simcax/dotime
+  tag: 0.0.121
+imagePullSecrets: []
+ingress:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m
+    nginx.org/client-max-body-size: 50m
+    nginx.org/proxy-connect-timeout: 30s
+    nginx.org/proxy-read-timeout: 20s
+  enabled: true
+  hosts:
+  - host: dev2.dotime.me
+    paths:
+    - backend:
+        serviceName: dotime-me
+        servicePort: 80
+      path: /
+  tls:
+  - hosts:
+    - dev2.dotime.me
+    secretName: dev-dotime-tls
+minAvailable: 1
+nameOverride: ''
+nameSpace: dotime-me-dev
+nodeSelector: {}
+podAnnotations: {}
+podSecurityContext: {}
+redis:
+  image:
+    pullPolicy: IfNotPresent
+    repository: redis
+    tag: 6.2
+  livenessProbe:
+    initialDelaySeconds: 30
+    periodSeconds: 5
+    successThreshold: 1
+    timeoutSeconds: 5
+  readinessProbe:
+    initialDelaySeconds: 30
+    periodSeconds: 5
+    successThreshold: 1
+    timeoutSeconds: 1
+  replicaCount: 1
+  resources:
+    limits:
+      cpu: 200m
+      memory: 200Mi
+    requests:
+      cpu: 100m
+      memory: 100Mi
+  service:
+    port: 6379
+    type: ClusterIP
+  volumeMounts:
+  - mountPath: /health
+    name: dotime-me-dev1-redis-health
+    readOnly: true
+  volumes:
+  - defaultMode: 493
+    name: dotime-me-dev1-redis-health
+replicaCount: 2
+resources:
+  limits:
+    cpu: 200m
+    memory: 200Mi
+  requests:
+    cpu: 100m
+    memory: 100Mi
+securityContext: {}
+service:
+  port: 80
+  type: ClusterIP
+serviceAccount:
+  annotations: {}
+  create: false
+  name: ''
+tolerations: []
+volumeMounts:
+- mountPath: /root/.postgresql
+  name: cockroachdb-ssl-cert-volume
+  readOnly: true
+volumes:
+- name: cockroachdb-ssl-cert-volume
+  secretName: cockroach-ssl-cert
