@@ -67,11 +67,11 @@ redis:
     type: ClusterIP
   volumeMounts:
   - mountPath: /health
-    name: dotime-me-dev1-redis-health
+    name: dotime-me-dev2-redis-health
     readOnly: true
   volumes:
   - defaultMode: 493
-    name: dotime-me-dev1-redis-health
+    name: dotime-me-dev2-redis-health
 replicaCount: 2
 resources:
   limits:
