@@ -58,10 +58,10 @@ redis:
   replicaCount: 1
   resources:
     limits:
-      cpu: 200m
+      cpu: 400
       memory: 200Mi
     requests:
-      cpu: 100m
+      cpu: 200
       memory: 100Mi
   service:
     port: 6379
