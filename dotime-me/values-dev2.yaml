@@ -77,10 +77,10 @@ replicaCount: 2
 resources:
   limits:
     cpu: 400m
-    memory: 200Mi
+    memory: 400Mi
   requests:
     cpu: 400m
-    memory: 100Mi
+    memory: 300Mi
 securityContext: {}
 service:
   port: 80
