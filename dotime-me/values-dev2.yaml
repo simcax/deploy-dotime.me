@@ -83,7 +83,7 @@ resources:
     memory: 300Mi
 securityContext: {}
 service:
-  port: 80
+  port: 443
   type: ClusterIP
 serviceAccount:
   annotations: {}
